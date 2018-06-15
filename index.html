@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>URL-encoder for SVG</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <form class="container">
+        <div class="svgCode">
+            <textarea name="" id="svgInput"></textarea>
+        </div>
+        <button type="submit">Enter</button>
+    </div>
+  </body>
+  <script>
+    const symbols = /[\r\n"%#()<>?\[\\\]^`{|}]/g;
+
+    function addNameSpace( data ) {
+        if ( data.indexOf( "http://www.w3.org/2000/svg" ) < 0 ) {
+            data = data.replace( /<svg/g, "<svg xmlns='http://www.w3.org/2000/svg'" );
+        }
+
+        return data;
+    }
+
+    function encodeSVG( data ) {
+    // Use single quotes instead of double to avoid encoding.
+        if ( data.indexOf( '"' ) >= 0 ) {
+            data = data.replace( /"/g, "'" );
+        }
+
+        data = data.replace( />\s{1,}</g, "><" );
+        data = data.replace( /\s{2,}/g, " " );
+
+        return data.replace( symbols, escape );
+    }
+
+    const form = document.querySelector("form");
+
+
+    function submitForm(e) {
+        e.preventDefault();
+
+        const svgFile = document.getElementById("svgInput").value;
+        const namespaced = addNameSpace(svgFile);
+        const escaped = encodeSVG( namespaced );
+        const resultCss = 'background-image: url("data:image/svg+xml,' + escaped + '");';
+
+        alert(resultCss);
+    }
+
+    form.addEventListener("submit", submitForm);
+  </script>
+</html>

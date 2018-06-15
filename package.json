@@ -1,0 +1,16 @@
+{
+  "name": "url-decoder-desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "maxlibin",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^2.0.2",
+    "menubar": "^5.2.3"
+  }
+}
