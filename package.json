@@ -2,15 +2,19 @@
   "name": "url-decoder-desktop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "electron .",
+    "dist": "electron-builder",
+    "compile": "electron-webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "maxlibin",
   "license": "ISC",
   "devDependencies": {
     "electron": "^2.0.2",
-    "menubar": "^5.2.3"
+    "electron-builder": "^20.15.1",
+    "electron-webpack": "^2.1.2",
+    "menubar": "^5.2.3",
+    "webpack": "^4.12.0"
   }
 }
